@@ -41,7 +41,7 @@ class Build
     private $io;
     private $factory;
 
-    public function __construct(IOInterface $io = null)
+    public function __construct(?IOInterface $io = null)
     {
         $this->io = $io ?: new NullIO();
         $this->factory = new Factory();

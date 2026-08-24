@@ -18,11 +18,11 @@ class MonorepoInstaller implements InstallerInterface
         return true;
     }
 
-    public function download(PackageInterface $package, PackageInterface $prevPackage = null)
+    public function download(PackageInterface $package, ?PackageInterface $prevPackage = null)
     {
     }
 
-    public function prepare($type, PackageInterface $package, PackageInterface $prevPackage = null)
+    public function prepare($type, PackageInterface $package, ?PackageInterface $prevPackage = null)
     {
     }
 
@@ -38,7 +38,7 @@ class MonorepoInstaller implements InstallerInterface
     {
     }
 
-    public function cleanup($type, PackageInterface $package, PackageInterface $prevPackage = null)
+    public function cleanup($type, PackageInterface $package, ?PackageInterface $prevPackage = null)
     {
     }
 
