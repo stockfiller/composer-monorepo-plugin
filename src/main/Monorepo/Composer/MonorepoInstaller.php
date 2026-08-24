@@ -13,7 +13,7 @@ class MonorepoInstaller implements InstallerInterface
         return $packageType === 'monorepo';
     }
 
-    public function isInstalled(InstalledRepositoryInterface $repo, PackageInterface $package):bool
+    public function isInstalled(InstalledRepositoryInterface $repo, PackageInterface $package): bool
     {
         return true;
     }

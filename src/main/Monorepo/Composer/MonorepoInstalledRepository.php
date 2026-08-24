@@ -74,16 +74,11 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
         return true;
     }
 
-    public function getRepoName(): void
+    public function getRepoName()
     {
     }
 
-    /**
-     * Returns list of registered packages.
-     *
-     * @return array
-     */
-    public function getPackages()
+    public function getPackages(): array
     {
         return $this->packages;
     }

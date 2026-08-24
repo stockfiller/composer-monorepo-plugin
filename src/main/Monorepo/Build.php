@@ -342,7 +342,7 @@ class Build
         return $packages;
     }
 
-    private function loadMonorepoJson($contents, $path): mixed
+    private function loadMonorepoJson($contents, $path)
     {
         $schema = json_decode(file_get_contents(__DIR__ . '/../../resources/monorepo-schema.json'));
         $data = json_decode($contents);
