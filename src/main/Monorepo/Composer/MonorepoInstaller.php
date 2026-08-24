@@ -8,12 +8,12 @@ use Composer\Repository\InstalledRepositoryInterface;
 
 class MonorepoInstaller implements InstallerInterface
 {
-    public function supports($packageType)
+    public function supports($packageType): bool
     {
         return $packageType === 'monorepo';
     }
 
-    public function isInstalled(InstalledRepositoryInterface $repo, PackageInterface $package)
+    public function isInstalled(InstalledRepositoryInterface $repo, PackageInterface $package):bool
     {
         return true;
     }
@@ -42,7 +42,7 @@ class MonorepoInstaller implements InstallerInterface
     {
     }
 
-    public function getInstallPath(PackageInterface $package)
+    public function getInstallPath(PackageInterface $package): string
     {
         return $package->getPrettyName(); // Monorepo package names are directory paths.
     }
