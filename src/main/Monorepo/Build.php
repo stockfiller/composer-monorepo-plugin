@@ -18,7 +18,6 @@ use Monorepo\Composer\MonorepoInstaller;
 use Monorepo\Composer\EventDispatcher;
 use Monorepo\Composer\AutoloadGenerator;
 use Symfony\Component\Finder\Finder;
-use Composer\Installer\InstallationManager;
 use Composer\IO\IOInterface;
 use Composer\IO\NullIO;
 use Composer\Config;
@@ -41,13 +40,13 @@ class Build
     private $io;
     private $factory;
 
-    public function __construct(IOInterface $io = null)
+    public function __construct(?IOInterface $io = null)
     {
         $this->io = $io ?: new NullIO();
         $this->factory = new Factory();
     }
 
-    public function build($rootDirectory, $optimize = false, $noDevMode = false, $classmapAuthoritative = false)
+    public function build($rootDirectory, $optimize = false, $noDevMode = false, $classmapAuthoritative = false): void
     {
         $this->io->write(sprintf('<info>Generating autoload files for monorepo sub-packages %s dev-dependencies.</info>', $noDevMode ? 'without' : 'with'));
         $start = microtime(true);
@@ -152,7 +151,7 @@ class Build
         $this->io->write(sprintf('Monorepo subpackage autoloads generated in <comment>%0.2f</comment> seconds.', $duration));
     }
 
-    private function resolvePackageDependencies($repository, $packages, $packageName, $vendorDir, $noDevMode)
+    private function resolvePackageDependencies($repository, $packages, $packageName, $vendorDir, $noDevMode): void
     {
         $config = $packages[$packageName];
         $dependencies = $config['deps'];
@@ -209,7 +208,7 @@ class Build
         }
     }
 
-    public function loadPackages($rootDirectory, $composer = null)
+    public function loadPackages($rootDirectory, $composer = null): array
     {
         if ($composer === null) {
             $composer = $this->createComposer($rootDirectory);

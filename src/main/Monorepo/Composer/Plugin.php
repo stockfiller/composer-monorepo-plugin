@@ -18,7 +18,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface, Capable
      */
     private $build;
 
-    public function __construct(Build $build = null)
+    public function __construct(?Build $build = null)
     {
         $this->build = $build;
     }

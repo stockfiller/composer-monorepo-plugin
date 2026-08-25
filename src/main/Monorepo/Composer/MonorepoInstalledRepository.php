@@ -30,7 +30,7 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
      *
      * @return bool
      */
-    public function hasPackage(PackageInterface $package)
+    public function hasPackage(PackageInterface $package): bool
     {
         return isset($this->packages[$package->getName()]);
     }
@@ -43,7 +43,7 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
      *
      * @return PackageInterface|null
      */
-    public function findPackage($name, $version)
+    public function findPackage($name, $version): ?PackageInterface
     {
         if (isset($this->packages[$name])) {
             return $this->packages[$name];
@@ -59,17 +59,17 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
      *
      * @return array
      */
-    public function findPackages($name, $version = null)
+    public function findPackages($name, $version = null): array
     {
         return array();
     }
 
-    public function getProviders($packageName)
+    public function getProviders($packageName): array
     {
         return [];
     }
 
-    public function isFresh()
+    public function isFresh(): bool
     {
         return true;
     }
@@ -78,17 +78,12 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
     {
     }
 
-    /**
-     * Returns list of registered packages.
-     *
-     * @return array
-     */
-    public function getPackages()
+    public function getPackages(): array
     {
         return $this->packages;
     }
 
-    public function loadPackages(array $packageNameMap, array $acceptableStabilities, array $stabilityFlags, array $alreadyLoaded = [])
+    public function loadPackages(array $packageNameMap, array $acceptableStabilities, array $stabilityFlags, array $alreadyLoaded = []): array
     {
         return $this->packages;
     }
@@ -100,12 +95,12 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
      * @param  int     $mode  a set of SEARCH_* constants to search on, implementations should do a best effort only
      * @return array[] an array of array('name' => '...', 'description' => '...')
      */
-    public function search($query, $mode = 0, $type = null)
+    public function search($query, $mode = 0, $type = null): array
     {
         return array();
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->packages);
     }
@@ -113,7 +108,7 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
     /**
      * Writes repository (f.e. to the disc).
      */
-    public function write($devMode, InstallationManager $installationManager)
+    public function write($devMode, InstallationManager $installationManager): void
     {
     }
 
@@ -122,7 +117,7 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
      *
      * @param PackageInterface $package package instance
      */
-    public function addPackage(PackageInterface $package)
+    public function addPackage(PackageInterface $package): void
     {
         $this->packages[$package->getName()] = $package;
     }
@@ -132,7 +127,7 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
      *
      * @param PackageInterface $package package instance
      */
-    public function removePackage(PackageInterface $package)
+    public function removePackage(PackageInterface $package): void
     {
         unset($this->packages[$package->getName()]);
     }
@@ -150,29 +145,29 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
     /**
      * Forces a reload of all packages
      */
-    public function reload()
+    public function reload(): void
     {
     }
-    
+
     /**
       * @return string[]
       */
-    public function getDevPackageNames()
+    public function getDevPackageNames(): array
     {
         return [];
     }
 
     /**
-      * @param string[] @devPackages
+      * @param string[] $devPackageNames
       */
-    public function setDevPackageNames(array $devPackageNames)
+    public function setDevPackageNames(array $devPackageNames): void
     {
     }
 
     /**
      * @return bool|null
      */
-    public function getDevMode()
+    public function getDevMode(): ?bool
     {
         return $this->noDevMode === null ? $this->noDevMode : !$this->noDevMode;
     }
