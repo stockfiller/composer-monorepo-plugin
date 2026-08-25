@@ -158,7 +158,7 @@ class MonorepoInstalledRepository implements InstalledRepositoryInterface
     }
 
     /**
-      * @param string[] @devPackageNames
+      * @param string[] $devPackageNames
       */
     public function setDevPackageNames(array $devPackageNames): void
     {
