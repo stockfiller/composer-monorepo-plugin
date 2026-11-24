@@ -1,5 +1,8 @@
 # Composer Monorepo Plugin
 
+> [!ALERT]
+> No longer in use by Stockfiller.
+
     Note: this project is still experimental. Please provide feedback!
 
 This plugin adds support for Monorepos when using Composer package manager. It
