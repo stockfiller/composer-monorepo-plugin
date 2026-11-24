@@ -1,7 +1,8 @@
 # Composer Monorepo Plugin
 
-> [!ALERT]
+> [!IMPORTANT]
 > No longer in use by Stockfiller.
+
 
     Note: this project is still experimental. Please provide feedback!
 
